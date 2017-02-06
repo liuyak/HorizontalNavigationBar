@@ -1,0 +1,2 @@
+# HorizontalNavigationBar
+新闻客户端的水平滚动导航条效果
