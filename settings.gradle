@@ -1,0 +1,3 @@
+include ':app'
+include ':horizontalnavigation'
+project(':horizontalnavigation').projectDir = new File(settingsDir, 'libraries/library_horizontalnavigationbar')

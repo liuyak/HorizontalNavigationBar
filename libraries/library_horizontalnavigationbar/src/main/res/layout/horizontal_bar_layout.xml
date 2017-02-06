@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center_vertical"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/horizontal_bar_channel_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="频道1"
+        android:textColor="#ff000000"
+        android:textSize="18sp"
+        android:singleLine="true"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" />
+
+    <View
+        android:id="@+id/horizontal_bar_channel_split"
+        android:layout_width="20dp"
+        android:layout_height="2dp"
+        android:background="@color/black"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:layout_marginTop="2dp"
+        />
+
+</LinearLayout>
