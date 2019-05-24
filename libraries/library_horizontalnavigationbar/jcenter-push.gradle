@@ -1,16 +1,11 @@
 apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 
-//-----------------------
-// upload to jcenter
-// run command: gradle bintrayUpload
-//-----------------------
-
 def siteUrl = 'https://github.com/liuyak/HorizontalNavigationBar'
 def gitUrl = 'https://github.com/liuyak/HorizontalNavigationBar.git'
 
 group = 'com.liuyk.widget'
-version = '1.0.3'
+version = '1.0.4'
 
 install {
     repositories.mavenInstaller {
@@ -74,7 +69,6 @@ bintray {
     key = properties.getProperty("bintray.apikey")
     configurations = ['archives']
     pkg {
-
         repo = 'maven'
         name = 'horizontal'
         licenses = ['Apache-2.0']
