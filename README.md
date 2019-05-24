@@ -2,6 +2,7 @@
 # 使用方法：
 
  1. App目录下build.gradle添加
+
  compile 'com.liuyk.widget:horizontalnavigation:1.0.4'
 
  2. 项目根目录下build.gradle添加
