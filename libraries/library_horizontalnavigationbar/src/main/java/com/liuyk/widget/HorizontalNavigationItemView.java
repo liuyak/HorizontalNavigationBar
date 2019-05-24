@@ -9,13 +9,7 @@ import android.widget.Checkable;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-/**
- * 水平滚动栏的子Item
- * <p>
- * @author liuyk
- */
 public class HorizontalNavigationItemView extends LinearLayout implements Checkable {
-    //分割线颜色
     protected int mSplitColor = Color.RED;
 
     private View mItemView;
@@ -68,19 +62,19 @@ public class HorizontalNavigationItemView extends LinearLayout implements Checka
     @Override
     public void setChecked(boolean checked) {
         isChecked = checked;
-        if (checked) {//是否被选中
-            if (isChannelSplit) {//是否有下划线
+        if (checked) {
+            if (isChannelSplit) {
                 mChannelSplit.setVisibility(View.VISIBLE);
                 mChannelSplit.setBackgroundColor(mSplitColor);
             }
             mChannelTitle.setTextColor(Color.parseColor("#ffcc66"));
-        }else{
+        } else {
             mChannelTitle.setTextColor(Color.BLACK);
             mChannelSplit.setVisibility(INVISIBLE);
         }
     }
 
-    public void setSplitColor(int resId){
+    public void setSplitColor(int resId) {
         mSplitColor = resId;
     }
 

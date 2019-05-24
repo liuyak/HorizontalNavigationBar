@@ -10,20 +10,12 @@ import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
-/**
- * 水平滚动栏
- *
- * @author liuyk
- */
 public abstract class HorizontalNavigationBar<T> extends HorizontalScrollView {
-    //分割线颜色
     protected int mSplitColor = Color.RED;
     private int mCurrentPosition = -1;
     private LinearLayout mItemViewContainer;
     private OnHorizontalNavigationSelectListener mOnHorizontalNavigationSelectListener;
-    /**
-     * 是否有下划线
-     */
+
     private boolean isChannelSplit;
 
     private ArrayList<T> mItems;
@@ -102,12 +94,10 @@ public abstract class HorizontalNavigationBar<T> extends HorizontalScrollView {
         return isChannelSplit;
     }
 
-    //分割线颜色
     public void setSplitColor(int resId) {
         mSplitColor = resId;
     }
 
-    //是否有下划线
     public void setChannelSplit(boolean channelSplit) {
         isChannelSplit = channelSplit;
     }
@@ -120,13 +110,6 @@ public abstract class HorizontalNavigationBar<T> extends HorizontalScrollView {
         return mItems == null ? null : mItems.get(position);
     }
 
-    /**
-     * 渲染子ItemView
-     *
-     * @param itemView        子View
-     * @param index           子View的索引位置
-     * @param currentPosition 当前选中位置
-     */
     public abstract void renderingItemView(HorizontalNavigationItemView itemView, int index, int currentPosition);
 
     public interface OnHorizontalNavigationSelectListener {
