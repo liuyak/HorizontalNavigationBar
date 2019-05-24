@@ -5,7 +5,7 @@ def siteUrl = 'https://github.com/liuyak/HorizontalNavigationBar'
 def gitUrl = 'https://github.com/liuyak/HorizontalNavigationBar.git'
 
 group = 'com.liuyk.widget'
-version = '1.0.4'
+version = '1.0.5'
 
 install {
     repositories.mavenInstaller {
@@ -24,8 +24,8 @@ install {
 
                 developers {
                     developer {
-                        id 'liuyakui'
-                        name 'liuyakui'
+                        id 'liuyak1004'
+                        name 'liuyak1004'
                         email 'liuyak1004@gmail.com'
                     }
                 }
