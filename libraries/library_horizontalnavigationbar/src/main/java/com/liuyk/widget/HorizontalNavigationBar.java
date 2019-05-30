@@ -35,7 +35,7 @@ public abstract class HorizontalNavigationBar<T> extends HorizontalScrollView {
 
     private void initView() {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.horizontal_navigation_container, this);
-        mItemViewContainer = (LinearLayout) view.findViewById(R.id.horizontal_navigation_container);
+        mItemViewContainer = view.findViewById(R.id.horizontal_navigation_container);
     }
 
     @Override

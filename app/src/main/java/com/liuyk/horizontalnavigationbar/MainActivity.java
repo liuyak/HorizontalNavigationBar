@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements HorizontalNavigat
     }
 
     private void initView() {
-        mHorizontalNavigationBar = (MyHorizontalNavigationBar) findViewById(R.id.horizontal_navigation);
+        mHorizontalNavigationBar = findViewById(R.id.horizontal_navigation);
         mHorizontalNavigationBar.setChannelSplit(true);//需要设置在数据之前
         mHorizontalNavigationBar.setItems(getData());
         mHorizontalNavigationBar.addOnHorizontalNavigationSelectListener(this);

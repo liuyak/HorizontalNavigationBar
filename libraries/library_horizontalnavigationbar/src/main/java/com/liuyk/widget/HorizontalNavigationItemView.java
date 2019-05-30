@@ -38,7 +38,7 @@ public class HorizontalNavigationItemView extends LinearLayout implements Checka
     private void initView() {
         //attachToRoot(默认true)决定了，root是否 是resource的父对象
         this.mItemView = LayoutInflater.from(getContext()).inflate(R.layout.horizontal_bar_layout, this);
-        mChannelTitle = (TextView) this.mItemView.findViewById(R.id.horizontal_bar_channel_title);
+        mChannelTitle = this.mItemView.findViewById(R.id.horizontal_bar_channel_title);
         mChannelSplit = this.mItemView.findViewById(R.id.horizontal_bar_channel_split);
     }
 
