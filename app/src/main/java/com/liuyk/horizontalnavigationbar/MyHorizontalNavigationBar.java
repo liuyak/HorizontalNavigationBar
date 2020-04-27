@@ -30,6 +30,7 @@ public class MyHorizontalNavigationBar extends HorizontalNavigationBar<Channel, 
         Channel channel = getItem(index);
         itemView.setChannelTitle(channel.getChannelName());
         itemView.setChecked(index == currentPosition);
+        itemView.setClick(false);
         itemView.setChannelSplit(false);
     }
 

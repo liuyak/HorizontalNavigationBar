@@ -17,6 +17,9 @@ public abstract class BaseHorizontalNavigationItemView extends LinearLayout impl
      */
     protected boolean isChecked;
 
+    //是否可以点击
+    protected boolean isClick;
+
     public BaseHorizontalNavigationItemView(Context context) {
         this(context, null);
     }
@@ -27,5 +30,19 @@ public abstract class BaseHorizontalNavigationItemView extends LinearLayout impl
 
     public BaseHorizontalNavigationItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+    }
+
+    public void setClick(boolean click) {
+        isClick = click;
+        setEnabled(click);
+    }
+
+    public boolean isClick() {
+        return isClick;
+    }
+
+    @Override
+    public void setClickable(boolean clickable) {
+        super.setClickable(clickable);
     }
 }
