@@ -60,6 +60,8 @@ public class HorizontalNavigationItemView extends BaseHorizontalNavigationItemVi
     public void setChecked(boolean checked) {
         if (checked) {
             mChannelTitle.setTextColor(Color.parseColor("#ffcc66"));
+            mChannelSplit.setVisibility(isChannelSplit ? VISIBLE : GONE);
+            mChannelSplit.setBackgroundColor(mSplitColor);
         } else {
             mChannelTitle.setTextColor(Color.BLACK);
             mChannelSplit.setVisibility(INVISIBLE);

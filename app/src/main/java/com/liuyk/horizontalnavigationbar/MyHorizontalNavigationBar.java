@@ -2,6 +2,7 @@ package com.liuyk.horizontalnavigationbar;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.util.AttributeSet;
 
 import com.liuyk.widget.HorizontalNavigationBar;
@@ -30,8 +31,9 @@ public class MyHorizontalNavigationBar extends HorizontalNavigationBar<Channel, 
         Channel channel = getItem(index);
         itemView.setChannelTitle(channel.getChannelName());
         itemView.setChecked(index == currentPosition);
-        itemView.setClick(false);
-        itemView.setChannelSplit(false);
+        itemView.setClick(true);
+        itemView.setChannelSplit(true);
+        itemView.setSplitColor(Color.RED);
     }
 
     @Override
