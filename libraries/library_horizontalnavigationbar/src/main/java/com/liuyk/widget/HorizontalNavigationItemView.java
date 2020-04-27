@@ -22,7 +22,7 @@ public class HorizontalNavigationItemView extends BaseHorizontalNavigationItemVi
     /**
      * 是否有下划线
      */
-    private boolean isChannelSplit;
+    private boolean isSplit;
 
     public HorizontalNavigationItemView(Context context) {
         this(context, null);
@@ -48,20 +48,20 @@ public class HorizontalNavigationItemView extends BaseHorizontalNavigationItemVi
         mChannelTitle.setText(channelTitle);
     }
 
-    public boolean isChannelSplit() {
-        return isChannelSplit;
+    public boolean isSplit() {
+        return isSplit;
     }
 
-    public void setChannelSplit(boolean channelSplit) {
-        isChannelSplit = channelSplit;
-        mChannelSplit.setVisibility(channelSplit ? VISIBLE : GONE);
+    public void setSplit(boolean isSplit) {
+        this.isSplit = isSplit;
+        mChannelSplit.setVisibility(isSplit ? VISIBLE : GONE);
     }
 
     @Override
     public void setChecked(boolean checked) {
         if (checked) {
             mChannelTitle.setTextColor(Color.parseColor("#ffcc66"));
-            mChannelSplit.setVisibility(isChannelSplit ? VISIBLE : GONE);
+            mChannelSplit.setVisibility(isSplit ? VISIBLE : GONE);
             mChannelSplit.setBackgroundColor(mSplitColor);
         } else {
             mChannelTitle.setTextColor(Color.BLACK);
