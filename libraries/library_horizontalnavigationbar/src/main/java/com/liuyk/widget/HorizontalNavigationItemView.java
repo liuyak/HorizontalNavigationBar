@@ -53,15 +53,12 @@ public class HorizontalNavigationItemView extends BaseHorizontalNavigationItemVi
 
     public void setChannelSplit(boolean channelSplit) {
         isChannelSplit = channelSplit;
+        mChannelSplit.setVisibility(channelSplit ? VISIBLE : GONE);
     }
 
     @Override
     public void setChecked(boolean checked) {
         if (checked) {
-            if (isChannelSplit) {
-                mChannelSplit.setVisibility(View.VISIBLE);
-                mChannelSplit.setBackgroundColor(mSplitColor);
-            }
             mChannelTitle.setTextColor(Color.parseColor("#ffcc66"));
         } else {
             mChannelTitle.setTextColor(Color.BLACK);

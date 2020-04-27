@@ -30,13 +30,12 @@ public class MyHorizontalNavigationBar extends HorizontalNavigationBar<Channel, 
         Channel channel = getItem(index);
         itemView.setChannelTitle(channel.getChannelName());
         itemView.setChecked(index == currentPosition);
+        itemView.setChannelSplit(false);
     }
 
     @Override
     public HorizontalNavigationItemView createItemView(HorizontalNavigationBar navigationBar, int position) {
         HorizontalNavigationItemView horizontalNavigationItemView = new HorizontalNavigationItemView(getContext());
-        horizontalNavigationItemView.setSplitColor(getSplitColor());
-        horizontalNavigationItemView.setChannelSplit(isSplit());
         return horizontalNavigationItemView;
     }
 

@@ -1,7 +1,6 @@
 package com.liuyk.widget;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,12 +15,9 @@ import java.util.ArrayList;
  * Created by liuyakui on 2020/4/27.
  */
 public abstract class HorizontalNavigationBar<T, H extends BaseHorizontalNavigationItemView> extends HorizontalScrollView {
-    protected int mSplitColor = Color.RED;
     private int mCurrentPosition = -1;
     private LinearLayout mItemViewContainer;
     private OnHorizontalNavigationSelectListener mOnHorizontalNavigationSelectListener;
-
-    private boolean isSplit;
 
     private ArrayList<T> mItems;
 
@@ -91,22 +87,6 @@ public abstract class HorizontalNavigationBar<T, H extends BaseHorizontalNavigat
             int left = this.mItemViewContainer.getChildAt(index).getLeft();
             smoothScrollTo(left, 0);
         }
-    }
-
-    public boolean isSplit() {
-        return isSplit;
-    }
-
-    public void setSplitColor(int resId) {
-        mSplitColor = resId;
-    }
-
-    public int getSplitColor() {
-        return mSplitColor;
-    }
-
-    public void setSplit(boolean channelSplit) {
-        isSplit = channelSplit;
     }
 
     public void addOnHorizontalNavigationSelectListener(OnHorizontalNavigationSelectListener onHorizontalNavigationSelectListener) {
