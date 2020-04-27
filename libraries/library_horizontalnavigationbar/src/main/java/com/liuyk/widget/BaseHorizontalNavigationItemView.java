@@ -7,7 +7,7 @@ import android.widget.Checkable;
 import android.widget.LinearLayout;
 
 /**
- * ItemView基类
+ * BaseHorizontalNavigationItemView
  * <p>
  * Created by liuyakui on 2020/4/27.
  */

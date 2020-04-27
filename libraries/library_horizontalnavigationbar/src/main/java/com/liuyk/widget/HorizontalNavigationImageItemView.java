@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 /**
- * 图片类型的滚动栏
+ * Image HorizontalNavigationBar
  * <p>
  * Created by liuyakui on 2020/4/27.
  */

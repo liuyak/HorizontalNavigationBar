@@ -8,20 +8,17 @@ import android.view.View;
 import android.widget.TextView;
 
 /**
- * 水平滚动导航栏
+ * HorizontalNavigationBar
  * <p>
  * Created by liuyakui on 2020/4/27.
  */
 public class HorizontalNavigationItemView extends BaseHorizontalNavigationItemView {
-    //下划线颜色
+    //split color
     protected int mSplitColor = Color.BLACK;
 
     private View mChannelSplit;
     private TextView mChannelTitle;
 
-    /**
-     * 是否有下划线
-     */
     private boolean isSplit;
 
     public HorizontalNavigationItemView(Context context) {

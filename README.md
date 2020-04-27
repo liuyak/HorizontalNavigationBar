@@ -3,7 +3,7 @@
 
 1. App目录下build.gradle添加
 
-   compile 'com.liuyk.widget:horizontalnavigation:1.0.6'
+   compile 'com.liuyk.widget:horizontalnavigation:1.0.8'
 
 2. 项目根目录下build.gradle添加
  
@@ -32,7 +32,6 @@
    private void initView() {
    
         mHorizontalNavigationBar = findViewById(R.id.horizontal_navigation);
-        mHorizontalNavigationBar.setChannelSplit(true);//需要设置在数据之前
         mHorizontalNavigationBar.setItems(getData());
         mHorizontalNavigationBar.addOnHorizontalNavigationSelectListener(this);
         mHorizontalNavigationBar.setCurrentChannelItem(0);

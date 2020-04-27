@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import java.util.ArrayList;
 
 /**
- * 水平滚动导航栏
+ * HorizontalNavigationBar
  * <p>
  * Created by liuyakui on 2020/4/27.
  */
