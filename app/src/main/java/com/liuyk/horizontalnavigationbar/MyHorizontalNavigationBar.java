@@ -8,11 +8,11 @@ import com.liuyk.widget.HorizontalNavigationBar;
 import com.liuyk.widget.HorizontalNavigationItemView;
 
 /**
- * 水平滚动条
+ * 水平滚动导航栏
  * <p>
- * @author liuyk
+ * Created by liuyakui on 2020/4/27.
  */
-public class MyHorizontalNavigationBar extends HorizontalNavigationBar<Channel> {
+public class MyHorizontalNavigationBar extends HorizontalNavigationBar<Channel, HorizontalNavigationItemView> {
     public MyHorizontalNavigationBar(Context paramContext) {
         super(paramContext);
     }
@@ -30,6 +30,14 @@ public class MyHorizontalNavigationBar extends HorizontalNavigationBar<Channel> 
         Channel channel = getItem(index);
         itemView.setChannelTitle(channel.getChannelName());
         itemView.setChecked(index == currentPosition);
+    }
+
+    @Override
+    public HorizontalNavigationItemView createItemView(HorizontalNavigationBar navigationBar, int position) {
+        HorizontalNavigationItemView horizontalNavigationItemView = new HorizontalNavigationItemView(getContext());
+        horizontalNavigationItemView.setSplitColor(getSplitColor());
+        horizontalNavigationItemView.setChannelSplit(isSplit());
+        return horizontalNavigationItemView;
     }
 
     @Override

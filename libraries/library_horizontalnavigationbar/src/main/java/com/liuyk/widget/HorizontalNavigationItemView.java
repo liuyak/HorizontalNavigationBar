@@ -5,14 +5,16 @@ import android.graphics.Color;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Checkable;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class HorizontalNavigationItemView extends LinearLayout implements Checkable {
+/**
+ * 水平滚动导航栏
+ * <p>
+ * Created by liuyakui on 2020/4/27.
+ */
+public class HorizontalNavigationItemView extends BaseHorizontalNavigationItemView {
     protected int mSplitColor = Color.RED;
 
-    private View mItemView;
     private View mChannelSplit;
     private TextView mChannelTitle;
 
@@ -20,11 +22,6 @@ public class HorizontalNavigationItemView extends LinearLayout implements Checka
      * 是否有下划线
      */
     private boolean isChannelSplit;
-
-    /**
-     * 是否选中
-     */
-    private boolean isChecked;
 
     public HorizontalNavigationItemView(Context context) {
         this(context, null);
@@ -36,10 +33,9 @@ public class HorizontalNavigationItemView extends LinearLayout implements Checka
     }
 
     private void initView() {
-        //attachToRoot(默认true)决定了，root是否 是resource的父对象
-        this.mItemView = LayoutInflater.from(getContext()).inflate(R.layout.horizontal_bar_layout, this);
-        mChannelTitle = this.mItemView.findViewById(R.id.horizontal_bar_channel_title);
-        mChannelSplit = this.mItemView.findViewById(R.id.horizontal_bar_channel_split);
+        View mItemView = LayoutInflater.from(getContext()).inflate(R.layout.horizontal_bar_layout, this);
+        mChannelTitle = mItemView.findViewById(R.id.horizontal_bar_channel_title);
+        mChannelSplit = mItemView.findViewById(R.id.horizontal_bar_channel_split);
     }
 
     /**
@@ -61,7 +57,6 @@ public class HorizontalNavigationItemView extends LinearLayout implements Checka
 
     @Override
     public void setChecked(boolean checked) {
-        isChecked = checked;
         if (checked) {
             if (isChannelSplit) {
                 mChannelSplit.setVisibility(View.VISIBLE);

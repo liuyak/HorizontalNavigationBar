@@ -10,13 +10,18 @@ import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
-public abstract class HorizontalNavigationBar<T> extends HorizontalScrollView {
+/**
+ * 水平滚动导航栏
+ * <p>
+ * Created by liuyakui on 2020/4/27.
+ */
+public abstract class HorizontalNavigationBar<T, H extends BaseHorizontalNavigationItemView> extends HorizontalScrollView {
     protected int mSplitColor = Color.RED;
     private int mCurrentPosition = -1;
     private LinearLayout mItemViewContainer;
     private OnHorizontalNavigationSelectListener mOnHorizontalNavigationSelectListener;
 
-    private boolean isChannelSplit;
+    private boolean isSplit;
 
     private ArrayList<T> mItems;
 
@@ -49,10 +54,8 @@ public abstract class HorizontalNavigationBar<T> extends HorizontalScrollView {
         this.mItems = items;
         this.mItemViewContainer.removeAllViews();
         for (int i = 0; i < items.size(); i++) {
-            final HorizontalNavigationItemView itemView = new HorizontalNavigationItemView(getContext());
+            final H itemView = createItemView(this, i);
             itemView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
-            itemView.setChannelSplit(isChannelSplit);
-            itemView.setSplitColor(mSplitColor);
             renderingItemView(itemView, i, mCurrentPosition);
 
             final int index = i;
@@ -79,7 +82,7 @@ public abstract class HorizontalNavigationBar<T> extends HorizontalScrollView {
         }
         this.mCurrentPosition = index;
         for (int i = 0; i < childCount; i++) {
-            HorizontalNavigationItemView itemView = (HorizontalNavigationItemView) this.mItemViewContainer.getChildAt(i);
+            H itemView = (H) this.mItemViewContainer.getChildAt(i);
             itemView.setChecked(i == mCurrentPosition);
         }
         if (mCurrentPosition == 0) {
@@ -90,16 +93,20 @@ public abstract class HorizontalNavigationBar<T> extends HorizontalScrollView {
         }
     }
 
-    public boolean isChannelSplit() {
-        return isChannelSplit;
+    public boolean isSplit() {
+        return isSplit;
     }
 
     public void setSplitColor(int resId) {
         mSplitColor = resId;
     }
 
-    public void setChannelSplit(boolean channelSplit) {
-        isChannelSplit = channelSplit;
+    public int getSplitColor() {
+        return mSplitColor;
+    }
+
+    public void setSplit(boolean channelSplit) {
+        isSplit = channelSplit;
     }
 
     public void addOnHorizontalNavigationSelectListener(OnHorizontalNavigationSelectListener onHorizontalNavigationSelectListener) {
@@ -110,7 +117,9 @@ public abstract class HorizontalNavigationBar<T> extends HorizontalScrollView {
         return mItems == null ? null : mItems.get(position);
     }
 
-    public abstract void renderingItemView(HorizontalNavigationItemView itemView, int index, int currentPosition);
+    public abstract void renderingItemView(H itemView, int index, int currentPosition);
+
+    public abstract H createItemView(HorizontalNavigationBar navigationBar, int position);
 
     public interface OnHorizontalNavigationSelectListener {
         void select(int index);
