@@ -13,7 +13,8 @@ import android.widget.TextView;
  * Created by liuyakui on 2020/4/27.
  */
 public class HorizontalNavigationItemView extends BaseHorizontalNavigationItemView {
-    protected int mSplitColor = Color.RED;
+    //下划线颜色
+    protected int mSplitColor = Color.BLACK;
 
     private View mChannelSplit;
     private TextView mChannelTitle;
