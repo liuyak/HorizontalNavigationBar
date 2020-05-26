@@ -16,9 +16,8 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:singleLine="true"
-        android:text="频道1"
         android:textColor="#ff000000"
-        android:textSize="18sp" />
+        android:textSize="17sp" />
 
     <View
         android:id="@+id/horizontal_bar_channel_split"

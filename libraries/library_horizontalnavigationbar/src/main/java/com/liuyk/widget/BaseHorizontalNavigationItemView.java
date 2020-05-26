@@ -1,7 +1,6 @@
 package com.liuyk.widget;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.widget.Checkable;
 import android.widget.LinearLayout;
@@ -24,11 +23,11 @@ public abstract class BaseHorizontalNavigationItemView extends LinearLayout impl
         this(context, null);
     }
 
-    public BaseHorizontalNavigationItemView(Context context, @Nullable AttributeSet attrs) {
+    public BaseHorizontalNavigationItemView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
     }
 
-    public BaseHorizontalNavigationItemView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    public BaseHorizontalNavigationItemView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 

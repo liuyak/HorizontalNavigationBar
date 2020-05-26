@@ -33,6 +33,8 @@ public class MyHorizontalNavigationBar extends HorizontalNavigationBar<Channel, 
         itemView.setChecked(index == currentPosition);
         itemView.setClick(true);
         itemView.setSplit(true);
+        itemView.setSelectBold(true);
+        itemView.setSelectTextSize(20f);
         itemView.setSplitColor(Color.RED);
     }
 

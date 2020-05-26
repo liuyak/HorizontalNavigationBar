@@ -20,6 +20,8 @@ public class HorizontalNavigationItemView extends BaseHorizontalNavigationItemVi
     private TextView mChannelTitle;
 
     private boolean isSplit;
+    private float selectTextSize;
+    private boolean isBoldSelect;
 
     public HorizontalNavigationItemView(Context context) {
         this(context, null);
@@ -54,15 +56,37 @@ public class HorizontalNavigationItemView extends BaseHorizontalNavigationItemVi
         mChannelSplit.setVisibility(isSplit ? VISIBLE : GONE);
     }
 
+    /**
+     * 选择后的字体大小
+     *
+     * @param size size
+     */
+    public void setSelectTextSize(float size) {
+        selectTextSize = size;
+    }
+
+    /**
+     * 选中是否加粗
+     *
+     * @param bold isBold
+     */
+    public void setSelectBold(boolean bold) {
+        isBoldSelect = bold;
+    }
+
     @Override
     public void setChecked(boolean checked) {
         if (checked) {
-            mChannelTitle.setTextColor(Color.parseColor("#ffcc66"));
             mChannelSplit.setVisibility(isSplit ? VISIBLE : GONE);
             mChannelSplit.setBackgroundColor(mSplitColor);
+            mChannelTitle.setTextColor(Color.parseColor("#ffcc66"));
+            mChannelTitle.setTextSize(selectTextSize);
+            mChannelTitle.getPaint().setFakeBoldText(isBoldSelect);
         } else {
-            mChannelTitle.setTextColor(Color.BLACK);
             mChannelSplit.setVisibility(INVISIBLE);
+            mChannelTitle.setTextColor(Color.BLACK);
+            mChannelTitle.setTextSize(17);
+            mChannelTitle.getPaint().setFakeBoldText(false);
         }
     }
 

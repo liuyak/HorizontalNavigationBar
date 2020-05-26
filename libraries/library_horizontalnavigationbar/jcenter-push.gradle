@@ -5,7 +5,7 @@ def siteUrl = 'https://github.com/liuyak/HorizontalNavigationBar'
 def gitUrl = 'https://github.com/liuyak/HorizontalNavigationBar.git'
 
 group = 'com.liuyk.widget'
-version = '1.0.8'
+version = '1.0.9'
 
 install {
     repositories.mavenInstaller {
@@ -62,7 +62,7 @@ artifacts {
 }
 
 Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
+properties.load(project.rootProject.file('gradle.properties').newDataInputStream())
 
 bintray {
     user = properties.getProperty("bintray.user")
