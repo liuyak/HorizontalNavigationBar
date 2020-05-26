@@ -22,6 +22,7 @@ public class HorizontalNavigationItemView extends BaseHorizontalNavigationItemVi
     private boolean isSplit;
     private float selectTextSize;
     private boolean isBoldSelect;
+    private static final int DEFAULT_SIZE = 17;
 
     public HorizontalNavigationItemView(Context context) {
         this(context, null);
@@ -80,12 +81,12 @@ public class HorizontalNavigationItemView extends BaseHorizontalNavigationItemVi
             mChannelSplit.setVisibility(isSplit ? VISIBLE : GONE);
             mChannelSplit.setBackgroundColor(mSplitColor);
             mChannelTitle.setTextColor(Color.parseColor("#ffcc66"));
-            mChannelTitle.setTextSize(selectTextSize);
+            mChannelTitle.setTextSize(selectTextSize > 0 ? selectTextSize : DEFAULT_SIZE);
             mChannelTitle.getPaint().setFakeBoldText(isBoldSelect);
         } else {
             mChannelSplit.setVisibility(INVISIBLE);
             mChannelTitle.setTextColor(Color.BLACK);
-            mChannelTitle.setTextSize(17);
+            mChannelTitle.setTextSize(DEFAULT_SIZE);
             mChannelTitle.getPaint().setFakeBoldText(false);
         }
     }
