@@ -1,25 +1,26 @@
 package com.liuyk.widget;
 
 import android.content.Context;
+import android.database.DataSetObserver;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 
-import java.util.ArrayList;
+import com.liuyk.adapter.BaseAdapter;
 
 /**
  * HorizontalNavigationBar
  * <p>
  * Created by liuyakui on 2020/4/27.
  */
-public abstract class HorizontalNavigationBar<T, H extends BaseHorizontalNavigationItemView> extends HorizontalScrollView {
+public class HorizontalNavigationBar extends HorizontalScrollView {
     private int mCurrentPosition = -1;
     private LinearLayout mItemViewContainer;
     private OnHorizontalNavigationSelectListener mOnHorizontalNavigationSelectListener;
-
-    private ArrayList<T> mItems;
+    private DataSetObserver mDataSetObserver;
+    private BaseAdapter mAdapter;
 
     public HorizontalNavigationBar(Context paramContext) {
         this(paramContext, null);
@@ -39,48 +40,85 @@ public abstract class HorizontalNavigationBar<T, H extends BaseHorizontalNavigat
         mItemViewContainer = view.findViewById(R.id.horizontal_navigation_container);
     }
 
-    @Override
-    protected void onFinishInflate() {
-        super.onFinishInflate();
+    public void setAdapter(BaseAdapter mAdapter) {
+        this.mAdapter = mAdapter;
     }
 
-    public void setItems(ArrayList<T> items) {
-        if (items == null) return;
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        if (mAdapter != null && mDataSetObserver == null) {
+            mDataSetObserver = new MyDataSetObserver();
+            mAdapter.registerDataSetObserver(mDataSetObserver);
+            mAdapter.notifyDataChange();
+        }
+    }
 
-        this.mItems = items;
-        this.mItemViewContainer.removeAllViews();
-        for (int i = 0; i < items.size(); i++) {
-            final H itemView = createItemView(this, i);
-            itemView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
-            renderingItemView(itemView, i, mCurrentPosition);
+    @Override
+    protected void onDetachedFromWindow() {
+        super.onDetachedFromWindow();
+        if (mAdapter != null && mDataSetObserver != null) {
+            mAdapter.unregisterDataSetObserver(mDataSetObserver);
+            mDataSetObserver = null;
+        }
+    }
+
+    private class MyDataSetObserver extends DataSetObserver {
+        @Override
+        public void onChanged() {
+            super.onChanged();
+            setItems();
+        }
+
+        @Override
+        public void onInvalidated() {
+            super.onInvalidated();
+        }
+    }
+
+    public void setItems() {
+        if (mAdapter == null || mAdapter.getItems() == null || mAdapter.getItems().isEmpty()) {
+            return;
+        }
+
+        mItemViewContainer.removeAllViews();
+        mAdapter.getViews().clear();
+
+        final int size = mAdapter.getItems().size();
+
+        for (int i = 0; i < size; i++) {
+            final View itemView = mAdapter.builderItemView(this, i);
+//            itemView.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.MATCH_PARENT));
+
+            mAdapter.cacheItemView(itemView);
 
             final int index = i;
             itemView.setOnClickListener(new OnClickListener() {
                 public void onClick(View paramAnonymousView) {
-                    HorizontalNavigationBar.this.setCurrentChannelItem(index);
                     if (mOnHorizontalNavigationSelectListener != null) {
                         mOnHorizontalNavigationSelectListener.select(index);
                     }
                 }
             });
-            this.mItemViewContainer.addView(itemView);
+            mAdapter.bindItemView(itemView, index);
+            mItemViewContainer.addView(itemView);
         }
         scrollTo(0, 0);
+    }
+
+    private void cacheView() {
+
     }
 
     public void setCurrentChannelItem(int index) {
         int childCount = this.mItemViewContainer.getChildCount();
         if (index > childCount - 1) {
-            throw new RuntimeException("position more size");
+            return;
         }
         if (index == this.mCurrentPosition) {
             return;
         }
         this.mCurrentPosition = index;
-        for (int i = 0; i < childCount; i++) {
-            H itemView = (H) this.mItemViewContainer.getChildAt(i);
-            itemView.setChecked(i == mCurrentPosition);
-        }
         if (mCurrentPosition == 0) {
             scrollTo(0, 0);
         } else {
@@ -92,14 +130,6 @@ public abstract class HorizontalNavigationBar<T, H extends BaseHorizontalNavigat
     public void addOnHorizontalNavigationSelectListener(OnHorizontalNavigationSelectListener onHorizontalNavigationSelectListener) {
         this.mOnHorizontalNavigationSelectListener = onHorizontalNavigationSelectListener;
     }
-
-    public T getItem(int position) {
-        return mItems == null ? null : mItems.get(position);
-    }
-
-    public abstract void renderingItemView(H itemView, int index, int currentPosition);
-
-    public abstract H createItemView(HorizontalNavigationBar navigationBar, int position);
 
     public interface OnHorizontalNavigationSelectListener {
         void select(int index);

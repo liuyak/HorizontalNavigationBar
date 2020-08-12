@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#ffffff">
 
-    <com.liuyk.horizontalnavigationbar.MyHorizontalNavigationBar
+    <com.liuyk.widget.HorizontalNavigationBar
         android:id="@+id/horizontal_navigation"
         android:layout_width="match_parent"
         android:layout_height="50dp"

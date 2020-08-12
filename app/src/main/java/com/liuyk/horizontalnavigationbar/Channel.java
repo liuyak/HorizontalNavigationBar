@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Channel implements Serializable {
     private static final long serialVersionUID = -7415501530039818852L;
     private String channelName;
+    public boolean isSelect;
 
     public String getChannelName() {
         return channelName;
