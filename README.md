@@ -24,31 +24,37 @@
 # 案例代码
  
 
-    <com.liuyk.horizontalnavigationbar.MyHorizontalNavigationBar
+    <com.liuyk.widget.HorizontalNavigationBar
             android:id="@+id/horizontal_navigation"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+            android:background="#f2f2f2"
             android:scrollbars="none" />
         
 
 Java部分
 
-    private void initView() {
-                mHorizontalNavigationBar = findViewById(R.id.horizontal_navigation);
-                mHorizontalNavigationBar.setItems(getData());
-                mHorizontalNavigationBar.addOnHorizontalNavigationSelectListener(this);
-                mHorizontalNavigationBar.setCurrentChannelItem(0);
-            }
-        
-            private ArrayList<Channel> getData(){
-                final ArrayList<Channel> items = new ArrayList<>();
-                for(int i=0; i<15; i++){
-                    final Channel channel = new Channel();
-                    channel.setChannelName("选项" + (i+1));
-                    items.add(channel);
-                }
-                return items;
-            }
+ private void initView() {
+         mHorizontalNavigationBar = findViewById(R.id.horizontal_navigation);
+         mHorizontalNavigationBar.addOnHorizontalNavigationSelectListener(this);
+         adapter = new ChannelAdapter();
+         adapter.setItems(getData());
+         mHorizontalNavigationBar.setAdapter(adapter);
+         mHorizontalNavigationBar.setCurrentChannelItem(0);
+     }
+
+     private ArrayList<Channel> getData() {
+         final ArrayList<Channel> items = new ArrayList<>();
+         for (int i = 0; i < 15; i++) {
+             final Channel channel = new Channel();
+             if (i == 0) {
+                 channel.isSelect = true;
+             }
+             channel.setChannelName("选项" + (i + 1));
+             items.add(channel);
+         }
+         return items;
+     }
     
 
 # bean
